@@ -1,49 +1,39 @@
-## PandoraBoxChain Explorer Web Application
+# PandoraBoxChain Explorer Web Application
 
-The pretty straightforward SPA with React/Redux architecture
-
-**NOTE: You only need to run this once!**
-
+## Initializing and start
 ```sh
-$ npm install # This will install the necessary packages to use the app
+npm i
+npm start
+```
+
+## Configuration
+All configurations are placed in the file `./src/consfig/index.js`  
+Default variables are: 
+```javascript
+default: {
+    protocol: 'http',  // boxproxy protocol
+    host: 'localhost', // boxproxy host
+    port: 1111,        // boxproxy port
+    wsport: 1337       // boxproxy web sockets port
+}
+```
+but these settings can be overriden by evirnoment variables:
+```sh
+REACT_APP_BOXPROXY_PROTOCOL=http
+REACT_APP_BOXPROXY_HOST=localhost
+REACT_APP_BOXPROXY_PORT=1111
+REACT_APP_BOXPROXY_WS_PORT=1337
 ```
 
 
-
-### To run the app in Development Mode
-
+## Useing with docker
+Building and starting:  
 ```sh
-$ npm run dev
+npm run build:docker
+npm run start:docker
 ```
-
-Wait about 30 seconds for your development environment to initialize.
-
-When it finishes, open your browser and go to `http://localhost:8080/`
-
-If you see the landing page, it means you have set up everything successfully.
-
-
-### List of NPM Commands
-
-
+...and stopping:
 ```sh
-$ npm run dev       # build and watch, but javascript not minified
-$ npm run build     # build a minified production version
-$ npm run lint      # linting using ESLint
-$ npm run test      # run test using Jest
-$ npm run clean     # it runs before each build, so you don't need to
-$ npm run storybook # it starts storybook server
+npm run stop:docker
 ```
-
-
-## Suggested Workflow
-
-After you check out the repo:
-
-0. Go to your project root in your host machine  ( e.g. your Mac )
-1. Run `npm run dev` in your terminal ( wait until the dashboard show complete status )
-2. Go to your browser and go to `localhost:8080`
-3. Make code changes
-4. If there are compilation errors, you will see it in the terminal dashboard
-5. Watch your code changes reflect on browser without refreshing
-6. Repeat your development steps
+*Docker compose is required (!!!)*
